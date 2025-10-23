@@ -1,0 +1,15 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: 9167c97e-517f-4c73-8e94-84660c37a953
+  title: An Introduction to Mechanistic Interpretability of Neural Networks 
+  # description:
+  # keywords: []
+  authors: Siddharth Setlur
+  github: https://github.com/siddharthsetlur/feature-manifolds
+  # To autogenerate a Table of Contents, run "myst init --write-toc"
+site:
+  template: book-theme
+  # options:
+  #   favicon: favicon.ico
+  #   logo: site_logo.png
