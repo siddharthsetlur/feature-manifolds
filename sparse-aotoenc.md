@@ -76,10 +76,67 @@ We can think of a neural network as approximating a larger sparse model (@elhage
 
 In other words, we can think of a neural network as approximating some larger model by superposition. In the larger model (where we have as many neurons as features), neurons are monosemantic. The models we can build in practice use superposition to project these features onto polysemantic neurons. 
 
+The main takeaway here is that neurons exhibit polysemanticity and cannot be used as the fundamental unit of a neural network in the context of MI. 
+
 ## What is a feature?
 
-Having seen that neurons  
+Thus far, we've been talking about "features" without defining precisely what we mean by them. Intuitively these should be thought of as the intrinsic characteristics of the dataset the model is attempting to learn and that the model uses to represent the data. For example, InceptionV1 might have features such as curves, car doors, and dog faces among others that it uses to represent the dataset of images. An LLM might use features like category theory, politics, and Scotland among others as features that it believes represent the dataset of text. There are multiple approaches that one could take to define features such as (@elhage2022superposition): 
 
+(1) *features as arbitrary functions of the input*. 
+
+(2) *features as interpretable properties* i.e. things like curves or dog faces that are human interpretable. 
+
+(3) *Features are neurons in sufficiently large models*, i.e. the neurons in the large model that the observed model is attempting to approximate using superposition. Intituively, each neuron in the upper model depicted in @superposition-hypothesis forms a feature of the observed model downstairs. 
+
+Although (3) might seem circular, this interpretation yields features the model might actually learn (assuming the superposition hypothesis). This is not true of (1). Using (3) gives us a shot of extracting features the model cares about, while (2) restricts to concepts that we understand. Finally, as we will see below (3) is easy to operationalize. 
+
+Formally, this definition uses the superposition hypothesis to state the following. Consider a single block transformer model, i.e. a transformer with a single attention layer and a single MLP layer. Let $m = d_{\text{MLP}}$ denote the number of neurons in the MLP layer. Then the *activation space* of the model is $\mathbb{R}^m$ (each of the $m$ neurons can take on a single real value). Each token $j$ yields a vector $x^j\in \mathbb{R}^m$ when fed through the MLP layer. The superposition hypothesis states that this activation vector is an approximation as below
+```{math}
+:label: linear-rep-hyp
+x^j \approx b + \sum_i f_i(x^j)d_i
+```
+where $f_i(x^j)\in \mathbb{R}$ is the *activation* of feature $i$ and $d_i\in\mathbb{R}^m $ is a unit vector in activation space called the *direction* of feature $i$. Note that there are $n>>m$ pairwise quasi-orthogonal feature directions $d_1,\dots, d_n$. The fact that features are *sparse* means that for a given $x^j$, $f_i(x^j) = 0$ for most $i$. 
+:::{note}
+@linear-rep-hyp is only stating that the map from features to activation vectors is linear **not** the map from an input token to features (this is almost always non-linear). 
+::: 
+## Using features to determine the mechanics of a model
+Suppose that we can express MLP activations as a linear combination of feature diections as above. @bricken2023monosemanticity put forward desirable characteristics of such a decomposition: 
+
+1. *Interpretatable conditions for feature activation*: We can find a collection of tokens $j$ that cause feature $i$ to activate, i.e. $f_i(x^j)$ is high and we can describe this collection of tokens.
+
+2. *Interpretable downstream effects*: Tuning $f_i$ (forcing it to be high or low) results in predictable and interpretable effects on the token as it passes through to subsequent layers. 
+
+3. *The feature faithfully approximates the function of the MLP layer*: The right hand side of [](#linear-rep-hyp) approximates the left hand side well (as measured by a loss function). 
+
+A feature decomposition satisfying these criteria would allow us to (@bricken2023monosemanticity):
+
+1. Determine the contribution of a feature to the layer’s output, and the next layer’s activations, on a specific example.
+2. Monitor the network for the activation of a specific feature (see e.g. speculation about safety-relevant features).
+3. Change the behavior of the network in predictable ways by changing the values of some features. In multilayer models this could look like predictably influencing one layer by changing the feature activations in an earlier layer.
+4. Demonstrate that the network has learned certain properties of the data.
+5. Demonstrate that the network is using a given property of the data in producing its output on a specific example.
+6. Design inputs meant to activate a given feature and elicit certain outputs.
 # Sparse Autoencoders 
+```{figure} ./images/sae_big_picture.png
+:label: sae-architecture
+:alt: SAE 
+:align: center
 
+Decomposing MLP activations into features using a sparse, overcomplete autoencoder (@bricken2023monosemanticity).
+```
+We learn feature directions and activations by training a sparse autoencoder (SAE). This is a simple neural network with two layers. The first layer is an encoder that takes in an activation vector $x\in \mathbb{R}^m$ and maps it to a higher-dimensional (say $N$) latent space using a linear transformation followed by a ReLU activation function. Denote by $W^\text{enc}$ the learned encoder weights and by $b^\text{enc}$ the biases. The second layer maps the latent space back down to $m$-dimensions using a linear transformation. Denote by $W^\text{dec}$ the learned decoder weights and by $b^\text{dec}$ the biases. Applying the encoder and then the decoder to an activation vector $x$ yields
+```{math}
+:label: sae-linear-hyp
+\hat{x} = b^\text{dec} + \sum_{i=1}^N f_i(x)W_{\dot, i}^\text{dec}
+```
+where 
+$$
+f_i(x) = ReLU(W^\text{enc}_{i,.} x + b_i^\text{enc})
+$$
+If $x\approx \hat{x}$ and the features are sparse, we have an implementation of @linear-rep-hyp. The loss function we train the SAE on accomplishes exactly this 
+```{math}
+:label: sae-loss-func
+\mathcal{L}(x) &= \|x-\hat{x}\|_2^2 + \lambda\|f_i(x)\|_0, &x\in \mathbb{R}^m
+```
+The first term ensures that the activation vectors are reconstructed faithfully while the second term ensures sparsity. 
 # Feature Manifolds 
