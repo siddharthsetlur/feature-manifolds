@@ -1,0 +1,113 @@
+
+@article{olah_zoom_2020,
+	title = {Zoom In: An Introduction to Circuits},
+	volume = {5},
+	issn = {2476-0757},
+	url = {https://distill.pub/2020/circuits/zoom-in},
+	doi = {10.23915/distill.00024.001},
+	shorttitle = {Zoom In},
+	pages = {10.23915/distill.00024.001},
+	number = {3},
+	journaltitle = {Distill},
+	shortjournal = {Distill},
+	author = {Olah, Chris and Cammarata, Nick and Schubert, Ludwig and Goh, Gabriel and Petrov, Michael and Carter, Shan},
+	urldate = {2025-08-07},
+	date = {2020-03-10},
+}
+
+ @article{templeton2024scaling,
+       title={Scaling Monosemanticity: Extracting Interpretable Features from Claude 3 Sonnet},
+       author={Templeton, Adly and Conerly, Tom and Marcus, Jonathan and Lindsey, Jack and Bricken, Trenton and Chen, Brian and Pearce, Adam and Citro, Craig and Ameisen, Emmanuel and Jones, Andy and Cunningham, Hoagy and Turner, Nicholas L and McDougall, Callum and MacDiarmid, Monte and Freeman, C. Daniel and Sumers, Theodore R. and Rees, Edward and Batson, Joshua and Jermyn, Adam and Carter, Shan and Olah, Chris and Henighan, Tom},
+       year={2024},
+       journal={Transformer Circuits Thread},
+       url={https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html}
+    }
+
+@article{olah2018the,
+  author = {Olah, Chris and Satyanarayan, Arvind and Johnson, Ian and Carter, Shan and Schubert, Ludwig and Ye, Katherine and Mordvintsev, Alexander},
+  title = {The Building Blocks of Interpretability},
+  journal = {Distill},
+  year = {2018},
+  note = {https://distill.pub/2018/building-blocks},
+  doi = {10.23915/distill.00010}
+}
+
+@misc{engels_not_2024,
+	title = {Not All Language Model Features Are One-Dimensionally Linear},
+	rights = {Creative Commons Attribution 4.0 International},
+	url = {https://arxiv.org/abs/2405.14860},
+	doi = {10.48550/ARXIV.2405.14860},
+	abstract = {Recent work has proposed that language models perform computation by manipulating one-dimensional representations of concepts ("features") in activation space. In contrast, we explore whether some language model representations may be inherently multi-dimensional. We begin by developing a rigorous definition of irreducible multi-dimensional features based on whether they can be decomposed into either independent or non-co-occurring lower-dimensional features. Motivated by these definitions, we design a scalable method that uses sparse autoencoders to automatically find multi-dimensional features in {GPT}-2 and Mistral 7B. These auto-discovered features include strikingly interpretable examples, e.g. circular features representing days of the week and months of the year. We identify tasks where these exact circles are used to solve computational problems involving modular arithmetic in days of the week and months of the year. Next, we provide evidence that these circular features are indeed the fundamental unit of computation in these tasks with intervention experiments on Mistral 7B and Llama 3 8B, and we examine the continuity of the days of the week feature in Mistral 7B. Overall, our work argues that understanding multi-dimensional features is necessary to mechanistically decompose some model behaviors.},
+	publisher = {{arXiv}},
+	author = {Engels, Joshua and Michaud, Eric J. and Liao, Isaac and Gurnee, Wes and Tegmark, Max},
+	urldate = {2025-08-07},
+	date = {2024},
+	keywords = {{FOS}: Computer and information sciences, Machine Learning (cs.{LG})},
+}
+
+@article{bricken2023monosemanticity,
+       title={Towards Monosemanticity: Decomposing Language Models With Dictionary Learning},
+       author={Bricken, Trenton and Templeton, Adly and Batson, Joshua and Chen, Brian and Jermyn, Adam and Conerly, Tom and Turner, Nick and Anil, Cem and Denison, Carson and Askell, Amanda and Lasenby, Robert and Wu, Yifan and Kravec, Shauna and Schiefer, Nicholas and Maxwell, Tim and Joseph, Nicholas and Hatfield-Dodds, Zac and Tamkin, Alex and Nguyen, Karina and McLean, Brayden and Burke, Josiah E and Hume, Tristan and Carter, Shan and Henighan, Tom and Olah, Christopher},
+       year={2023},
+       journal={Transformer Circuits Thread},
+       note={https://transformer-circuits.pub/2023/monosemantic-features/index.html}
+    }
+@article{hallucination2023,
+author = {Ji, Ziwei and Lee, Nayeon and Frieske, Rita and Yu, Tiezheng and Su, Dan and Xu, Yan and Ishii, Etsuko and Bang, Ye Jin and Madotto, Andrea and Fung, Pascale},
+title = {Survey of Hallucination in Natural Language Generation},
+year = {2023},
+issue_date = {December 2023},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {55},
+number = {12},
+issn = {0360-0300},
+url = {https://doi.org/10.1145/3571730},
+doi = {10.1145/3571730},
+abstract = {Natural Language Generation (NLG) has improved exponentially in recent years thanks to the development of sequence-to-sequence deep learning technologies such as Transformer-based language models. This advancement has led to more fluent and coherent NLG, leading to improved development in downstream tasks such as abstractive summarization, dialogue generation, and data-to-text generation. However, it is also apparent that deep learning based generation is prone to hallucinate unintended text, which degrades the system performance and fails to meet user expectations in many real-world scenarios. To address this issue, many studies have been presented in measuring and mitigating hallucinated texts, but these have never been reviewed in a comprehensive manner before.In this survey, we thus provide a broad overview of the research progress and challenges in the hallucination problem in NLG. The survey is organized into two parts: (1) a general overview of metrics, mitigation methods, and future directions, and (2) an overview of task-specific research progress on hallucinations in the following downstream tasks, namely abstractive summarization, dialogue generation, generative question answering, data-to-text generation, and machine translation. This survey serves to facilitate collaborative efforts among researchers in tackling the challenge of hallucinated texts in NLG.},
+journal = {ACM Comput. Surv.},
+month = mar,
+articleno = {248},
+numpages = {38},
+keywords = {consistency in NLG, factuality in NLG, faithfulness in NLG, extrinsic hallucination, intrinsic hallucination, Hallucination}
+}
+@article{elhage2021mathematical,
+   title={A Mathematical Framework for Transformer Circuits},
+   author={Elhage, Nelson and Nanda, Neel and Olsson, Catherine and Henighan, Tom and Joseph, Nicholas and Mann, Ben and Askell, Amanda and Bai, Yuntao and Chen, Anna and Conerly, Tom and DasSarma, Nova and Drain, Dawn and Ganguli, Deep and Hatfield-Dodds, Zac and Hernandez, Danny and Jones, Andy and Kernion, Jackson and Lovitt, Liane and Ndousse, Kamal and Amodei, Dario and Brown, Tom and Clark, Jack and Kaplan, Jared and McCandlish, Sam and Olah, Chris},
+   year={2021},
+   journal={Transformer Circuits Thread},
+   note={https://transformer-circuits.pub/2021/framework/index.html}
+}
+
+@article{elhage2022superposition,
+   title={Toy Models of Superposition},
+   author={Elhage, Nelson and Hume, Tristan and Olsson, Catherine and Schiefer, Nicholas and Henighan, Tom and Kravec, Shauna and Hatfield-Dodds, Zac and Lasenby, Robert and Drain, Dawn and Chen, Carol and Grosse, Roger and McCandlish, Sam and Kaplan, Jared and Amodei, Dario and Wattenberg, Martin and Olah, Christopher},
+   year={2022},
+   journal={Transformer Circuits Thread},
+   note={https://transformer-circuits.pub/2022/toy_model/index.html}
+}
+@INPROCEEDINGS {transparentAI2023,
+author = { Rauker, Tilman and Ho, Anson and Casper, Stephen and Hadfield-Menell, Dylan },
+booktitle = { 2023 IEEE Conference on Secure and Trustworthy Machine Learning (SaTML) },
+title = {{ Toward Transparent AI: A Survey on Interpreting the Inner Structures of Deep Neural Networks }},
+year = {2023},
+volume = {},
+ISSN = {},
+pages = {464-483},
+abstract = { The last decade of machine learning has seen drastic increases in scale and capabilities. Deep neural networks (DNNs) are increasingly being deployed in the real world. However, they are difficult to analyze, raising concerns about using them without a rigorous understanding of how they function. Effective tools for interpreting them will be important for building more trustworthy AI by helping to identify problems, fix bugs, and improve basic understanding. In particular, “inner” interpretability techniques, which focus on explaining the internal components of DNNs, are well-suited for developing a mechanistic understanding, guiding manual modifications, and reverse engineering solutions. Much recent work has focused on DNN interpretability, and rapid progress has thus far made a thorough systematization of methods difficult. In this survey, we review over 300 works with a focus on inner interpretability tools. We introduce a taxonomy that classifies methods by what part of the network they help to explain (weights, neurons, subnetworks, or latent representations) and whether they are implemented during (intrinsic) or after (post hoc) training. To our knowledge, we are also the first to survey a number of connections between interpretability research and work in adversarial robustness, continual learning, modularity, network compression, and studying the human visual system. We discuss key challenges and argue that the status quo in interpretability research is largely unproductive. Finally, we highlight the importance of future work that emphasizes diagnostics, debugging, adversaries, and benchmarking in order to make interpretability tools more useful to engineers in practical applications. },
+keywords = {Surveys;Deep learning;Training;Neural networks;Taxonomy;Reverse engineering;Neurons},
+doi = {10.1109/SaTML54575.2023.00039},
+url = {https://doi.ieeecomputersociety.org/10.1109/SaTML54575.2023.00039},
+publisher = {IEEE Computer Society},
+address = {Los Alamitos, CA, USA},
+month =Feb}
+@INPROCEEDINGS{inceptionv1,
+  author={Szegedy, Christian and Wei Liu and Yangqing Jia and Sermanet, Pierre and Reed, Scott and Anguelov, Dragomir and Erhan, Dumitru and Vanhoucke, Vincent and Rabinovich, Andrew},
+  booktitle={2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, 
+  title={Going deeper with convolutions}, 
+  year={2015},
+  volume={},
+  number={},
+  pages={1-9},
+  keywords={Computer architecture;Convolutional codes;Sparse matrices;Neural networks;Visualization;Object detection;Computer vision},
+  doi={10.1109/CVPR.2015.7298594}}
