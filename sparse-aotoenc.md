@@ -139,4 +139,13 @@ If $x\approx \hat{x}$ and the features are sparse, we have an implementation of 
 \mathcal{L}(x) &= \|x-\hat{x}\|_2^2 + \lambda\|f_i(x)\|_0, &x\in \mathbb{R}^m
 ```
 The first term ensures that the activation vectors are reconstructed faithfully while the second term ensures sparsity. 
+## Experimental results
+in @bricken2023monosemanticity, the authors train SAEs with increasingly higher latent dimensions on a simple single layer transformer. The results they obtain indicate that SAEs are capable of extracting interpretable features that 
+
+1. Activate with high specificity to a certain hypothesized context (by context we mean a description of the tokens that activate it like DNA features or Arabic script): whenever $f_i(x^j)$ is high the token $x^j$ can be described by the hypothesized context.
+2. Activate with high sensitivity to a certain hypothesized context: whenever a token $x^j$ is described by the context, $f_i(x^j)$ is high. 
+3. Cause appropriate downstream behavior: Tuning $f_i$ (e.g. by setting $f_i(x^j)$ to always be high regardless of the input token) and replacing $x^j$ by with $\hat{x}^j$ results in outputs that reflect $f_i$. Note that $\hat{x}^j$ is obtained in the following way: for a given $j$, run the model as is until we obtain the output of the MLP layer $x^j$. Replace $x^j$ in the residual stream by running it through the SAE *with the tuned version of $f_i$* and obtaining the reconstruction $\hat{x}^j$ and let the following layers of the transformer proceed as is. 
+4. Do not correspond to any single neuron
+I strongly recommend going through @bricken2023monosemanticity, as the visualizations of the features they find are very cool! The interactive dashboard lets you explore features, the tokens that activate them, the effects of ablating (tuning) features, and descriptions of features among other things. One striking thing that they observe is that features appear to cluster. 
 # Feature Manifolds 
+What can we say about the geometry of the embeddings? @engels_not_2024, @modell_origins_2025
