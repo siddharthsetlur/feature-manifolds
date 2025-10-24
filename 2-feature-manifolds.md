@@ -52,4 +52,4 @@ While @weekdays-feature provide examples that vailidate this framework, it is un
 
 ## Feature Manifolds
 
-@modell_origins_2025
+@modell_origins_2025 takes this formalism one step further and formally frames representations of features as manifolds. 

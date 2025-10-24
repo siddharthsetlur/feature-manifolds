@@ -17,7 +17,7 @@ export:
 # An Introduction to Mechanistic Interpretability of Neural Networks 
 
 :::{caution} 
-These is an informal exposition prepared as part of a [reading course](www.agq-cdt.org/training/cohort-reading-groups/interpretability-of-machine-learning-models/) I helped organize at the University of Edinburgh. This content is purely expository and some content is even lifted directly from the referenced papers. 
+These is an informal exposition prepared as part of a [reading course](https://www.agq-cdt.org/training/cohort-reading-groups/interpretability-of-machine-learning-models/) I helped organize at the University of Edinburgh. This content is purely expository and some content is even lifted directly from the referenced papers. 
 :::
 
 Last week, we saw that transformer models (such as LLMs) are relatively simple architectures primarily built on simple linear algebra. Despite their simple mathematical building blocks, when scaled up (large amount of data, training for long periods of time, and increasing the number of layers) these models produce impressive results on a large range of tasks. Although scaling up in this manner delivers impressive results, they also exhibit a wide range of harmful behaviors such as hallucination (@hallucination2023) or harmful content among others. Moreover, the models perform in unpredictable manner making deployment in sensitive domains such as medicine or law where decisions can significantly impact human lives challenging. 
