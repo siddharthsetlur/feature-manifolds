@@ -154,7 +154,7 @@ in @bricken2023monosemanticity, the authors train SAEs with increasingly higher 
 2D UMAP projection of the columns of the decoder matrix (feature directions) of sparse autoencoders with  varying latent space dimensions (@bricken2023monosemanticity).
 ```
 I strongly recommend going through @bricken2023monosemanticity, as the visualizations of the features they find are very cool! The interactive dashboard lets you explore features, the tokens that activate them, the effects of ablating (tuning) features, and descriptions of features among other things. One particularly striking observation is that feature directions (the columns of the decoder matrix of the sparse autoencoder) appear to cluster as seen in @feature-clustering. The image shows feature directions of sparse autoencoders with different latent dimensions (the gray is a sparse autoencoder with $512$ latent dimensions while the light green points are feature directions of an encoder with $16,384$ latent dimensions). Similar concepts such as those corresponding to Arabic script or base64 appear to cluster together. To me this is rather counterintuitive as I would have expected a more uniform distribution in order to minimize interference. 
-# Feature Manifolds 
-Recent work has explored the idea that the internal representations of LLMs (i.e. the way internal activations are represented in terms of features) lie on higher dimensional manifolds called *feature manifolds*. Geometric properties of these manifolds might tell us something about the properties of feature representations of a model. For instance @engels_not_2024, the authors find features that lie on circles. 
+
+
 
 , @modell_origins_2025
